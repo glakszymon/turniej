@@ -22,7 +22,7 @@
                 getData() {
                     // Call PHP script to fetch data
                     // Update this URL with the actual path to your PHP script
-                    fetch('https://dzban.eu/turniej/get_excel_data.php')
+                    fetch('https://dzban.eu/turniej/get_exel_data.php')
                         .then(response => response.json())
                         .then(data => {
                             this.excelData = data;
