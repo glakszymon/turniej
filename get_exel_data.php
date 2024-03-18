@@ -3,7 +3,7 @@
 require 'PHPExcel/Classes/PHPExcel.php';
 
 // SharePoint Excel file URL
-$excelUrl = 'staszic-my.sharepoint.com/:x:/r/personal/22dsgawrylak_lo01_pl/_layouts/15/Doc.aspx?sourcedoc=%7BC18C47BB-7BA6-49CE-AD99-5FAA9D937079%7D&file=Książka%202.xlsx';
+$excelUrl = 'https://staszic-my.sharepoint.com/:x:/r/personal/22dsgawrylak_lo01_pl/_layouts/15/Doc.aspx?sourcedoc=%7BC18C47BB-7BA6-49CE-AD99-5FAA9D937079%7D&file=Książka%202.xlsx';
 
 // Load Excel file
 $objPHPExcel = PHPExcel_IOFactory::load($excelUrl);
