@@ -21,7 +21,7 @@
         excelData: []
       },
       mounted() {
-        axios.get('https://staszic-my.sharepoint.com/:x:/g/personal/22dsgawrylak_lo01_pl/EbtHjMGme85JrZlfqp2TcHkBVPRm19HY3hd_V2Bq291FSQ', { responseType: 'arraybuffer' })
+        axios.get('staszic-my.sharepoint.com/:x:/r/personal/22dsgawrylak_lo01_pl/_layouts/15/Doc.aspx?sourcedoc=%7BC18C47BB-7BA6-49CE-AD99-5FAA9D937079%7D&file=Książka%202.xlsx', { responseType: 'arraybuffer' })
           .then(response => {
             const data = new Uint8Array(response.data);
             const workbook = XLSX.read(data, { type: 'array' });
