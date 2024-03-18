@@ -6,28 +6,42 @@
 </head>
 <body>
     <div id="app">
-        <button @click="getData">Get Data</button>
+        <button @click="downloadInfo">Get Data</button>
         <ul>
-            <li v-for="item in excelData" :key="item.id">{{ item }}</li>
+            <li v-for="item in dane" :key="item.id">{{ item }}</li>
         </ul>
     </div>
 
     <script>
         new Vue({
             el: '#app',
-            data: {
-                excelData: []
-            },
+            setup() {
+                    return {
+                        SHEET_ID: "1QMPU5OP4OXslW9kgGt73MPBeNamkteRC1xJTY7MybVI",
+                        SHEET_TITLE: 'Test',
+                        SHEET_RANGE: 'B:D',
+
+                        FULL_URL:null,
+                        dane: null,
+                        length: null,
+
+                        leftPanelData: Vue.ref(null)
+                    }
+                },
+
             methods: {
-                getData() {
-                    // Call PHP script to fetch data
-                    // Update this URL with the actual path to your PHP script
-                    fetch('https://dzban.eu/turniej/get_exel_data.php')
-                        .then(response => response.json())
-                        .then(data => {
-                            this.excelData = data;
-                        });
-                }
+                downloadInfo()
+                    {
+                        this.FULL_URL = 'https://docs.google.com/spreadsheets/d/'+this.SHEET_ID + '/gviz/tq?sheet=' + this.SHEET_TITLE + '&range=' + 
+                                    this.SHEET_RANGE + '&embedded=true',
+                        fetch(this.FULL_URL)
+                        .then(res => res.text())
+                        .then(rep => {
+                            this.dane = JSON.parse(rep.substr(47).slice(0,-2))
+                            this.length = this.dane.table.rows.length;
+                            // console.log(this.dane);
+                        })
+                    },
             }
         });
     </script>
